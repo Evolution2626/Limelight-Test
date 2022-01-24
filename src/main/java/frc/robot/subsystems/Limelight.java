@@ -13,7 +13,7 @@ import frc.util.ControlMode.*;
 
 public class Limelight extends SubsystemBase {
   /** Creates a new Limelight. */
-
+  
   private NetworkTable networkTable;
   private String tableName;
   private Boolean isConnected;
@@ -120,6 +120,7 @@ public class Limelight extends SubsystemBase {
       double a = ta.getDouble(0.0);
       return a;
   }
+  
   /**
    * ts Skew or rotation (-90 degrees to 0 degrees)
    * @return
@@ -128,6 +129,15 @@ public class Limelight extends SubsystemBase {
       NetworkTableEntry ts = networkTable.getEntry("ts");
       double s = ts.getDouble(0.0);
       return s;
+  }
+
+ /**
+   * target distance from the robot in meters
+   * @return
+   */
+
+  public double getTargetDistance(double targetHeight){
+    return targetHeight / Math.tan(getdegVerticalToTarget());
   }
 
   //Setters

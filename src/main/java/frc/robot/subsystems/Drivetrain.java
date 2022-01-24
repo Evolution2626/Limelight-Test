@@ -64,6 +64,17 @@ public class Drivetrain extends SubsystemBase {
     backLeft.set(left);
   }
 
+  /** 
+  *  rotate the robot with value between -1 and 1, positive being right and negative being left
+  *
+  *  @return
+  */
+
+  public void rotateTank(double rotationSpeed){
+    backRight.set(-rotationSpeed);
+    backLeft.set(rotationSpeed);
+  }
+
   public void driveTankVolts(double left, double right){
     backRight.setVoltage(right);
     backLeft.setVoltage(left);
