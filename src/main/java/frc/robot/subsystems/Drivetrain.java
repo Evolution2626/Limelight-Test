@@ -8,6 +8,7 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -18,9 +19,12 @@ public class Drivetrain extends SubsystemBase {
   private CANSparkMax frontLeft;
   private CANSparkMax backRight;
   private CANSparkMax backLeft;
+  public DifferentialDrive differentialDrive;
 
 
   public Drivetrain() {
+
+    differentialDrive = new DifferentialDrive(backLeft, backRight);
 
     frontRight = new CANSparkMax(Constants.CAN.FRONT_RIGHT_MOTOR, MotorType.kBrushless);
     frontLeft = new CANSparkMax(Constants.CAN.FRONT_LEFT_MOTOR, MotorType.kBrushless);
@@ -64,16 +68,6 @@ public class Drivetrain extends SubsystemBase {
     backLeft.set(left);
   }
 
-  /** 
-  *  rotate the robot with value between -1 and 1, positive being right and negative being left
-  *
-  *  @return
-  */
-
-  public void rotateTank(double rotationSpeed){
-    backRight.set(-rotationSpeed);
-    backLeft.set(rotationSpeed);
-  }
 
   public void driveTankVolts(double left, double right){
     backRight.setVoltage(right);
