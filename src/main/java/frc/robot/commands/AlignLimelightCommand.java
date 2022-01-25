@@ -12,14 +12,14 @@ import frc.robot.subsystems.Limelight;
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
-public class AlignLimelight extends PIDCommand {
+public class AlignLimelightCommand extends PIDCommand {
   /** Creates a new AlignLimelight. */
-  public AlignLimelight(Limelight limelight, Drivetrain drivetrain) {
+  public AlignLimelightCommand(Limelight limelight, Drivetrain drivetrain) {
     super(
-        // The controller that the command will use
-        new PIDController(0, 0, 0),
+        // The controller that the command will use (Still need to be adjusted and tuned)
+        new PIDController(1, 1, 0),
         // This should return the measurement
-        () -> 0,
+        () -> limelight.getdegRotationToTarget(),
         // This should return the setpoint (can also be a constant)
         () -> 0,
         // This uses the output
@@ -37,6 +37,6 @@ public class AlignLimelight extends PIDCommand {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return getController().atSetpoint();
   }
 }

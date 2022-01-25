@@ -51,4 +51,11 @@ public final class Constants {
     
         
     }
+
+    public interface GAMES_CONSTANTS {
+    
+        int HUB_TAPE_HEIGHT = 0;
+        int BALL_HEIGHT = 0;
+        int SHOOTING_DISTANCE =0;
+    }
 }
