@@ -56,6 +56,7 @@ public final class Constants {
     
         int HUB_TAPE_HEIGHT = 0;
         int BALL_HEIGHT = 0;
-        int SHOOTING_DISTANCE =0;
+        int SHOOTING_DISTANCE = 0;
+        int CAMERA_HEIGHT = 0;
     }
 }

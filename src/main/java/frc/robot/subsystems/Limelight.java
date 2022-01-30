@@ -9,6 +9,7 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.wpilibj.Notifier;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 import frc.util.ControlMode.*;
 
 public class Limelight extends SubsystemBase {
@@ -137,7 +138,7 @@ public class Limelight extends SubsystemBase {
    */
 
   public double getTargetDistance(double targetHeight){
-    return targetHeight / Math.tan(getdegVerticalToTarget());
+    return (targetHeight - Constants.GAMES_CONSTANTS.CAMERA_HEIGHT) / Math.tan(getdegVerticalToTarget());
   }
 
   //Setters
