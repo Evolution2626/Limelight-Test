@@ -25,7 +25,7 @@ public class AlignLimelightCommand extends PIDCommand {
         // This uses the output
         output -> {
           // Use the output here
-          drivetrain.differentialDrive.arcadeDrive(0, output);
+          drivetrain.arcadeDrive(0, output);
         });
     // Use addRequirements() here to declare subsystem dependencies.
 

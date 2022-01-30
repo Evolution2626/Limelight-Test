@@ -19,7 +19,7 @@ public class Drivetrain extends SubsystemBase {
   private CANSparkMax frontLeft;
   private CANSparkMax backRight;
   private CANSparkMax backLeft;
-  public DifferentialDrive differentialDrive;
+  private DifferentialDrive differentialDrive;
 
 
   public Drivetrain() {
@@ -66,6 +66,9 @@ public class Drivetrain extends SubsystemBase {
   public void driveTank(double left, double right){
     backRight.set(right);
     backLeft.set(left);
+  }
+  public void arcadeDrive(double speed, double rotation){
+    differentialDrive.arcadeDrive(speed, rotation);
   }
 
 

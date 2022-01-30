@@ -26,7 +26,7 @@ public class PlaceRobotLimelightCommand extends PIDCommand {
         // This uses the output
         output -> {
           // Use the output here
-          drivetrain.differentialDrive.arcadeDrive(output, 0);
+          drivetrain.arcadeDrive(output, 0);
         });
     // Use addRequirements() here to declare subsystem dependencies.
 
