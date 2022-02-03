@@ -18,10 +18,10 @@ public final class Constants {
      * CAN
      */
     public interface CAN {
-        int FRONT_RIGHT_MOTOR = 0;
-        int FRONT_LEFT_MOTOR = 0;
-        int BACK_RIGHT_MOTOR = 0;
-        int BACK_LEFT_MOTOR = 0;
+        int FRONT_RIGHT_MOTOR = 4;
+        int FRONT_LEFT_MOTOR = 7;
+        int BACK_RIGHT_MOTOR = 5;
+        int BACK_LEFT_MOTOR = 6;
         
     }
 
@@ -42,8 +42,8 @@ public final class Constants {
     }
 
     public interface AXES {
-        int RIGHT_AXES = 0;
-        int LEFT_AXES = 0;
+        int RIGHT_AXES = 5;
+        int LEFT_AXES = 1;
         
     }
 
