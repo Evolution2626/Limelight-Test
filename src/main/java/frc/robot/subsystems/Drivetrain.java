@@ -38,7 +38,7 @@ public class Drivetrain extends SubsystemBase {
     frontRight = new TalonSRX(Constants.CAN.FRONT_RIGHT_MOTOR);
     frontLeft = new TalonSRX(Constants.CAN.FRONT_LEFT_MOTOR);
     backRight = new TalonSRX(Constants.CAN.BACK_RIGHT_MOTOR);
-    backLeft = new TalonSRX(Constants.CAN.BACK_RIGHT_MOTOR);
+    backLeft = new TalonSRX(Constants.CAN.BACK_LEFT_MOTOR);
     /*
     
     frontRight = new CANSparkMax(Constants.CAN.FRONT_RIGHT_MOTOR, MotorType.kBrushless);
@@ -57,9 +57,9 @@ public class Drivetrain extends SubsystemBase {
     backLeft.setClosedLoopRampRate(500);
 */
     frontRight.setInverted(false);
-    frontLeft.setInverted(false);
+    frontLeft.setInverted(true);
     backRight.setInverted(false);
-    backLeft.setInverted(false);
+    backLeft.setInverted(true);
 /*
     frontRight.follow(backRight);
     frontLeft.follow(backLeft);
