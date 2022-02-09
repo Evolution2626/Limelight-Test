@@ -90,7 +90,14 @@ public class Drivetrain extends SubsystemBase {
   }
 
   public void arcadeDrive(double speed, double rotation){
-    differentialDrive.arcadeDrive(speed, rotation);
+    try {
+      differentialDrive.arcadeDrive(speed, rotation);
+    } catch (Exception e) {
+      System.out.println(e.toString());
+      System.out.println(speed);
+      System.out.println(rotation);
+    }
+    
   }
 
 /*

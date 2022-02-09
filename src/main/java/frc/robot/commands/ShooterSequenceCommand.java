@@ -14,27 +14,24 @@ import frc.robot.subsystems.Limelight;
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
 public class ShooterSequenceCommand extends SequentialCommandGroup {
   /** Creates a new ShooterSequenceCommand. */
-
-  boolean stopCommand = false;
+  private Limelight limelight;
+  private boolean stopCommand = false;
 
   public ShooterSequenceCommand(Limelight limelight, Drivetrain drivetrain) {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
+    this.limelight = limelight;
 
-    limelight.setPipeline(0); //tape pipeline
-    
-    if (limelight.getIsTargetFound()) {
-      addCommands(new AlignLimelightCommand(limelight, drivetrain), new PlaceRobotLimelightCommand(limelight, drivetrain, Constants.GAMES_CONSTANTS.HUB_TAPE_HEIGHT));
-    } else {
-      stopCommand = true;
-    }
-
+    addCommands(new AlignLimelightCommand(limelight, drivetrain)/*, new PlaceRobotLimelightCommand(limelight, drivetrain, Constants.GAMES_CONSTANTS.HUB_TAPE_HEIGHT)*/);
+    limelight.setPipeline(0);
     addRequirements(limelight, drivetrain);
   }
 
+  
 
   @Override
   public boolean isFinished() {
-    return stopCommand;
+    System.out.println("Target found: " + limelight.getIsTargetFound());
+    return !limelight.getIsTargetFound();
   }
 }

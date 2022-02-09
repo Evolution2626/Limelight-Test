@@ -9,7 +9,9 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.commands.AlignLimelightCommand;
 import frc.robot.commands.DrivetrainDriveCommand;
+import frc.robot.commands.PrintDataCommand;
 import frc.robot.commands.ShooterSequenceCommand;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Limelight;
@@ -46,7 +48,8 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    new JoystickButton(driverController, Button.kA.value).whenPressed(new ShooterSequenceCommand(limelight, drivetrain));
+    new JoystickButton(driverController, Button.kB.value).whileHeld(new PrintDataCommand(limelight));
+    new JoystickButton(driverController, Button.kA.value).whileHeld(new AlignLimelightCommand(limelight, drivetrain));
   }
 
   /**

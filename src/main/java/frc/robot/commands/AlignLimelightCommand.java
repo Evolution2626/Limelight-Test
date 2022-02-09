@@ -8,6 +8,7 @@ import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.PIDCommand;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Limelight;
+import frc.util.Range;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
@@ -15,9 +16,11 @@ import frc.robot.subsystems.Limelight;
 public class AlignLimelightCommand extends PIDCommand {
   /** Creates a new AlignLimelight. */
   public AlignLimelightCommand(Limelight limelight, Drivetrain drivetrain) {
+
+
     super(
         // The controller that the command will use (Still need to be adjusted and tuned)
-        new PIDController(1, 1, 0),
+        new PIDController(0.05, 0, 0),
         // This should return the measurement
         () -> limelight.getdegRotationToTarget(),
         // This should return the setpoint (can also be a constant)
@@ -25,7 +28,7 @@ public class AlignLimelightCommand extends PIDCommand {
         // This uses the output
         output -> {
           // Use the output here
-          drivetrain.arcadeDrive(0, output);
+          drivetrain.driveTank(-output, output);
         });
     // Use addRequirements() here to declare subsystem dependencies.
 
@@ -37,6 +40,6 @@ public class AlignLimelightCommand extends PIDCommand {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return getController().atSetpoint();
+    return Range.inRange(-0.1, 0.1, getController().getPositionError());
   }
 }
