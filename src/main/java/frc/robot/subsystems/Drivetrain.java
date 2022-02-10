@@ -7,7 +7,6 @@ package frc.robot.subsystems;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
@@ -24,7 +23,7 @@ public class Drivetrain extends SubsystemBase {
 
   public Drivetrain() {
 
-    differentialDrive = new DifferentialDrive(backLeft, backRight);
+    //differentialDrive = new DifferentialDrive(backLeft, backRight);
 
     frontRight = new CANSparkMax(Constants.CAN.FRONT_RIGHT_MOTOR, MotorType.kBrushless);
     frontLeft = new CANSparkMax(Constants.CAN.FRONT_LEFT_MOTOR, MotorType.kBrushless);
@@ -41,9 +40,9 @@ public class Drivetrain extends SubsystemBase {
     backRight.setClosedLoopRampRate(500);
     backLeft.setClosedLoopRampRate(500);
 
-    frontRight.setInverted(false);
+    frontRight.setInverted(true);
     frontLeft.setInverted(false);
-    backRight.setInverted(false);
+    backRight.setInverted(true);
     backLeft.setInverted(false);
 
     frontRight.follow(backRight);
@@ -68,7 +67,7 @@ public class Drivetrain extends SubsystemBase {
     backLeft.set(left);
   }
   public void arcadeDrive(double speed, double rotation){
-    differentialDrive.arcadeDrive(speed, rotation);
+    //differentialDrive.arcadeDrive(speed, rotation);
   }
 
 
