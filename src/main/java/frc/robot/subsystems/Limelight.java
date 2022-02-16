@@ -138,7 +138,7 @@ public class Limelight extends SubsystemBase {
    */
 
   public double getTargetDistance(double targetHeight){
-    return (targetHeight - Constants.GAMES_CONSTANTS.CAMERA_HEIGHT) / Math.tan(getdegVerticalToTarget());
+    return (targetHeight - Constants.GAMES_CONSTANTS.CAMERA_HEIGHT) / Math.tan(Math.toRadians(getdegVerticalToTarget()));
   }
 
   //Setters
