@@ -6,13 +6,17 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.AlignLimelightCommand;
+import frc.robot.commands.ControlPistonCommand;
+import frc.robot.commands.ControlWinchCommand;
 import frc.robot.commands.DrivetrainDriveCommand;
 import frc.robot.commands.PrintDataCommand;
 import frc.robot.commands.ShooterSequenceCommand;
+import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Limelight;
 
@@ -28,6 +32,8 @@ public class RobotContainer {
   private final Drivetrain drivetrain = new Drivetrain();
 
   private final Limelight limelight = new Limelight();
+
+  private final Climber climber = new Climber();
 
   private final XboxController driverController = new XboxController(Constants.USB.DRIVER_GAMEPAD);
 
@@ -50,6 +56,11 @@ public class RobotContainer {
   private void configureButtonBindings() {
     new JoystickButton(driverController, Button.kB.value).whileHeld(new PrintDataCommand(limelight));
     new JoystickButton(driverController, Button.kA.value).whileHeld(new AlignLimelightCommand(limelight, drivetrain));
+    new JoystickButton(driverController, Button.kRightBumper.value).whileHeld(new ControlPistonCommand(climber, Value.kForward));
+    new JoystickButton(driverController, Button.kLeftBumper.value).whileHeld(new ControlPistonCommand(climber, Value.kReverse));
+    new JoystickButton(driverController, Button.kX.value).whileHeld(new ControlWinchCommand(climber, 0.9));
+    new JoystickButton(driverController, Button.kY.value).whileHeld(new ControlWinchCommand(climber, -0.9));
+
   }
 
   /**

@@ -18,11 +18,11 @@ public final class Constants {
      * CAN
      */
     public interface CAN {
-        int FRONT_RIGHT_MOTOR = 4;
+        int FRONT_RIGHT_MOTOR = 3;
         int FRONT_LEFT_MOTOR = 7;
         int BACK_RIGHT_MOTOR = 5;
         int BACK_LEFT_MOTOR = 6;
-        
+        int WINCH = 4;
     }
 
     public interface USB {
@@ -32,6 +32,8 @@ public final class Constants {
     }
 
     public interface PCM {
+        int PISTON_FORWARD = 0;
+        int PISTON_REVERSE = 1;
     
         
     }
